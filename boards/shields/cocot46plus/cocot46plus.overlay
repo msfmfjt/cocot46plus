@@ -41,8 +41,8 @@
                     <&pro_micro 20 GPIO_ACTIVE_HIGH>,  // F5
                     <&pro_micro 19 GPIO_ACTIVE_HIGH>,  // F6
                     <&pro_micro 18 GPIO_ACTIVE_HIGH>,  // F7
-                    <&pro_micro 1 GPIO_ACTIVE_HIGH>,   // B1
-                    <&pro_micro 0 GPIO_ACTIVE_HIGH>;   // B3
+                    <&pro_micro 16 GPIO_ACTIVE_HIGH>,  // B1 (try pin 16)
+                    <&pro_micro 10 GPIO_ACTIVE_HIGH>;  // B3 (try pin 10)
     };
 
     encoder: encoder {
