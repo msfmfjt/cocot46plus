@@ -67,26 +67,7 @@
         sensors = <&encoder>;
     };
 
-    // Trackball key definitions (since actual trackball isn't supported)
-    trackball_keys {
-        compatible = "zmk,behaviors";
-        
-        tb_click: trackball_click {
-            compatible = "zmk,behavior-key-press";
-            label = "TB_CLICK";
-            #binding-cells = <0>;
-            bindings = <&kp>;
-            key = <&kp LCLK>;
-        };
-        
-        tb_scroll: trackball_scroll {
-            compatible = "zmk,behavior-key-press";
-            label = "TB_SCROLL";
-            #binding-cells = <0>;
-            bindings = <&kp>;
-            key = <&tog 3>; // Toggle scroll layer
-        };
-    };
+
 };
 
 // OLED configuration
@@ -119,7 +100,7 @@
             label = "TB_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp LCLK>, <&kp RCLK>, <&kp MCLK>;
+            bindings = <&kp LS(LCLK)>, <&kp LS(RCLK)>, <&kp LS(MCLK)>;
         };
         
         // Layer-tap for enhanced thumb usage
@@ -152,9 +133,7 @@
     };
 };
 
-// Power management for better battery life
-&pro_micro {
-    // Configure unused pins for low power
-    pinctrl-0 = <&pro_micro_default>;
-    pinctrl-names = "default";
+// Power management configuration
+&chosen {
+    zephyr,console = &cdc_acm_uart;
 };
