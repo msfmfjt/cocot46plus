@@ -27,22 +27,19 @@
     };
 
     kscan0: kscan {
-        compatible = "zmk,kscan-gpio-matrix";
+        compatible = "zmk,kscan-gpio-charlieplex";
         label = "KSCAN";
         
-        diode-direction = "col2row";
-        
-        row-gpios = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // D4 - Row 0
-                    <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // C6 - Row 1
-                    <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // D7 - Row 2
-                    <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;   // E6 - Row 3
-                    
-        col-gpios = <&pro_micro 21 GPIO_ACTIVE_HIGH>,  // F4
-                    <&pro_micro 20 GPIO_ACTIVE_HIGH>,  // F5
-                    <&pro_micro 19 GPIO_ACTIVE_HIGH>,  // F6
-                    <&pro_micro 18 GPIO_ACTIVE_HIGH>,  // F7
-                    <&pro_micro 15 GPIO_ACTIVE_HIGH>,  // B1
-                    <&pro_micro 14 GPIO_ACTIVE_HIGH>;  // B3
+        gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>,   // D4
+                <&pro_micro 5 GPIO_ACTIVE_HIGH>,   // C6
+                <&pro_micro 6 GPIO_ACTIVE_HIGH>,   // D7
+                <&pro_micro 7 GPIO_ACTIVE_HIGH>,   // E6
+                <&pro_micro 21 GPIO_ACTIVE_HIGH>,  // F4
+                <&pro_micro 20 GPIO_ACTIVE_HIGH>,  // F5
+                <&pro_micro 19 GPIO_ACTIVE_HIGH>,  // F6
+                <&pro_micro 18 GPIO_ACTIVE_HIGH>,  // F7
+                <&pro_micro 15 GPIO_ACTIVE_HIGH>,  // B1
+                <&pro_micro 14 GPIO_ACTIVE_HIGH>;  // B3
     };
 
     encoder: encoder {
