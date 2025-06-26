@@ -15,7 +15,7 @@
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <6>;
-        rows = <10>;
+        rows = <9>;
         
         // QMK keyboard.jsonに基づく完全な46キーレイアウト
         map = <
@@ -35,13 +35,7 @@
         row-gpios = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // D4 - Row 0
                     <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // C6 - Row 1
                     <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // D7 - Row 2
-                    <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // E6 - Row 3
-                    <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // Row 4 (virtual)
-                    <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // Row 5 (virtual)
-                    <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // Row 6 (virtual)
-                    <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,   // Row 7 (virtual)
-                    <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  // Row 8 (virtual)
-                    <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  // Row 9 (virtual)
+                    <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;   // E6 - Row 3
                     
         col-gpios = <&pro_micro 21 GPIO_ACTIVE_HIGH>,  // F4
                     <&pro_micro 20 GPIO_ACTIVE_HIGH>,  // F5
