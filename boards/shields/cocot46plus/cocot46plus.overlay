@@ -75,8 +75,8 @@
         label = "ENCODER";
         a-gpios = <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D3
         b-gpios = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D2
-        resolution = <4>;
-        status = "okay";
+        steps = <80>;
+        status = "disabled";
     };
 
     sensors {
@@ -84,6 +84,10 @@
         sensors = <&encoder>;
         triggers-per-rotation = <20>;
     };
+};
+
+&encoder {
+    status = "okay";
 };
 
 &pro_micro_i2c {
