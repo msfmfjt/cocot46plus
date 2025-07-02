@@ -90,45 +90,24 @@
     status = "okay";
 };
 
-&pinctrl {
-    spi0_default: spi0_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                <NRF_PSEL(SPIM_MOSI, 1, 4)>,
-                <NRF_PSEL(SPIM_MISO, 1, 4)>;
-        };
-    };
-
-    spi0_sleep: spi0_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                <NRF_PSEL(SPIM_MOSI, 1, 4)>,
-                <NRF_PSEL(SPIM_MISO, 1, 4)>;
-            low-power-enable;
-        };
-    };
-};
-
-&spi0 {
-    status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
-
-    trackball: trackball@0 {
+/ {
+    trackball: trackball {
         status = "okay";
         compatible = "pixart,adns5050";
-        reg = <0>;
-        spi-max-frequency = <1000000>;
+        
+        // GPIO pin assignments (update for your board)
+        sclk-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;    // Serial clock pin
+        sdio-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;   // Serial data I/O pin (bidirectional)
+        cs-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;      // Chip select pin
+
+        /*   optional features   */
+        // snipe-layers = <1>;
+        // scroll-layers = <2 3>;
+        // automouse-layer = <4>;
     };
-};
 
-/ {
-  trackball_listener {
-    compatible = "zmk,input-listener";
-    device = <&trackball>;
-
-  };
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+    };
 };
