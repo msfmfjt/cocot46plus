@@ -97,8 +97,8 @@
         
         // GPIO pin assignments (update for your board)
         sclk-gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;    // Serial clock pin
-        sdio-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;   // Serial data I/O pin (bidirectional)
-        cs-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;      // Chip select pin
+        sdio-gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;   // Serial data I/O pin (bidirectional)
+        cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;      // Chip select pin
 
         /*   optional features   */
         // snipe-layers = <1>;
