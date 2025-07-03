@@ -127,7 +127,7 @@
         motion-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
         
         /* Reset GPIO (optional) */
-        reset-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+        reset-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
         
         /* Configuration options */
         cpi = <1000>;        /* Fixed at 1000 CPI for ADNS5050 */
