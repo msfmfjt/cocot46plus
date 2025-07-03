@@ -5,8 +5,3 @@
 include:
   - board: nice_nano_v2
     shield: cocot46plus
-build:
-  settings:
-    - CONFIG_INPUT=y
-    - CONFIG_ADNS5050=y
-    - CONFIG_INPUT_ADNS5050=y
