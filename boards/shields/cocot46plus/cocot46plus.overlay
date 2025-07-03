@@ -111,3 +111,27 @@
         device = <&trackball>;
     };
 };
+
+&spi1 {
+    status = "okay";
+    
+    /* Chip select configuration */
+    cs-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+    
+    adns5050: adns5050@0 {
+        compatible = "pixart,adns5050";
+        reg = <0>;
+        spi-max-frequency = <2000000>;
+        
+        /* Motion interrupt GPIO (optional but recommended) */
+        motion-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
+        
+        /* Reset GPIO (optional) */
+        reset-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>;
+        
+        /* Configuration options */
+        cpi = <1000>;        /* Fixed at 1000 CPI for ADNS5050 */
+        invert-x;            /* Invert X axis if needed */
+        invert-y;            /* Invert Y axis if needed */
+    };
+};
