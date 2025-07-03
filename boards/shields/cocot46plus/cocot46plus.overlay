@@ -90,26 +90,53 @@
     status = "okay";
 };
 
-&spi1 {
+/* SPI0設定（デバッグ出力付き） */
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK, 0, 6)>,      /* P0.06 */
+                    <NRF_PSEL(SPIM_MOSI, 0, 8)>,     /* P0.08 */
+                    <NRF_PSEL(SPIM_MISO, 0, 8)>;     /* P0.08 (3線式) */
+        };
+    };
+};
+
+&spi0 {
+    compatible = "nordic,nrf-spim";
     status = "okay";
+    pinctrl-0 = <&spi0_default>;
+    pinctrl-names = "default";
     
-    /* Chip select configuration */
-    cs-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;  /* P0.17 */
     
-    adns5050: adns5050@0 {
+    trackball: adns5050@0 {
         compatible = "pixart,adns5050";
         reg = <0>;
-        spi-max-frequency = <2000000>;
+        spi-max-frequency = <1000000>;  /* デバッグ用に低速化 */
         
-        /* Motion interrupt GPIO (optional but recommended) */
-        motion-gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
+        /* デバッグ用：最小構成 */
+        cpi = <500>;  /* デフォルト値 */
+    };
+};
+
+/* GPIOの状態確認用 */
+/ {
+    gpio_test {
+        compatible = "gpio-leds";
         
-        /* Reset GPIO (optional) */
-        reset-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;
+        spi_sck_test: spi_sck {
+            gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+            label = "SPI_SCK_TEST";
+        };
         
-        /* Configuration options */
-        cpi = <1000>;        /* Fixed at 1000 CPI for ADNS5050 */
-        invert-x;            /* Invert X axis if needed */
-        invert-y;            /* Invert Y axis if needed */
+        spi_sdio_test: spi_sdio {
+            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+            label = "SPI_SDIO_TEST";
+        };
+        
+        spi_cs_test: spi_cs {
+            gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+            label = "SPI_CS_TEST";
+        };
     };
 };
