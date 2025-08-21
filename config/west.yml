@@ -2,6 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/petejohanson
+    - name: sekigon-gonnoc
+      url-base: https://github.com/sekigon-gonnoc
     - name: msfmfjt
       url-base: https://github.com/msfmfjt
   projects:
@@ -9,6 +11,9 @@ manifest:
       remote: zmkfirmware
       revision: feat/pointers-move-scroll
       import: app/west.yml
+    - name: zmk-component-bmp-boost
+      remote: sekigon-gonnoc
+      import: west.yml
     - name: zmk-adns5050-driver
       remote: msfmfjt
       revision: main
