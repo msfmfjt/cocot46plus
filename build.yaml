@@ -5,4 +5,3 @@
 include:
   - board: bmp_boost
     shield: cocot46plus
-    snippet: zmk-usb-logging
