@@ -76,7 +76,7 @@
         a-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D3
         b-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D2
         steps = <80>;
-        status = "disabled";
+        status = "okay";
     };
 
     sensors {
@@ -86,17 +86,13 @@
     };
 };
 
-&encoder {
-    status = "okay";
-};
-
 /* SPI0設定（デバッグ出力付き） */
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,      /* P0.06 */
-                    <NRF_PSEL(SPIM_MOSI, 0, 11)>,     /* P0.08 */
-                    <NRF_PSEL(SPIM_MISO, 0, 11)>;     /* P0.08 (3線式) */
+            psels = <NRF_PSEL(SPIM_SCK, 0, 8)>,      /* P0.08 */
+                    <NRF_PSEL(SPIM_MOSI, 0, 11)>,    /* P0.11 */
+                    <NRF_PSEL(SPIM_MISO, 0, 11)>;    /* P0.11 (3線式) */
         };
     };
 };
@@ -107,8 +103,8 @@
     pinctrl-0 = <&spi0_default>;
     pinctrl-names = "default";
     
-    cs-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;  /* P0.17 */
-    
+    cs-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;  /* P0.30 */
+
     trackball: adns5050@0 {
         compatible = "pixart,adns5050";
         reg = <0>;
