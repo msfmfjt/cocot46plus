@@ -10,7 +10,7 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,physical-layout = &physical_layout;
+        zmk,physical-layout = &default_transform;
     };
 
     default_transform: keymap_transform_0 {
@@ -27,11 +27,7 @@
 
     };
 
-    physical_layout: physical_layout_0 {
-        compatible = "zmk,physical-layout";
-        rows = <5>;
-        columns = <6>;
-    };
+    /* No separate physical_layout node; chosen points to matrix-transform. */
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio";
